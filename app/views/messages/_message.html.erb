@@ -11,6 +11,9 @@
     <div class="message-content">
       <%= message.content %>
     </div>
-    <%= image_tag message.image.variant(resize: '500x500'), class: 'message-image' if message.image.attached? %>
+    <% if message.video.attached? %>
+    <video src="<%= rails_blob_path(message.video) %>"type="video/mp4" controls></video>
+    <% end %>
+    <%# <%= image_tag message.image.variant(resize: '500x500'), class: 'message-image' if message.image.attached? %>
   </div>
 </div>
